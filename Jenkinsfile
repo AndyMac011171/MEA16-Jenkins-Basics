@@ -7,16 +7,19 @@ pipeline {
         stage('EchoingText') {
 
             steps {
-                // Run these as shell commands
+                // Run these as shell commands - some echoes
                 sh '''
-                echo "Hello world" > 1.txt
-                echo "This is a jenkins test example" > 2.txt
-                echo "Addition of a Jenkins Webhook..." > 3.txt
-                echo "...done right this time" > 4.txt
-                echo "This is from the Jenkins job named: ${JOB_NAME}"
+                echo "Hello world - running this from Jenkinsfile"
                 '''
             }
-
+            stage('Run Script') 
+            {
+            // This runs a script
+                steps 
+                {
+                    sh 'sh ./run.sh'
+                }
+            }
         }
     }
 
