@@ -1,33 +1,33 @@
-pipeline {
-
+pipeline 
+{
     agent any
+    stages 
+    {
+        stage('EchoingText') 
+        {
 
-    stages {
-
-        stage('EchoingText') {
-
-            steps {
+            steps 
+            {
                 // Run these as shell commands - some echoes
                 sh '''
                 echo "Hello world - running this from Jenkinsfile"
                 '''
             }
-            stage('Run Script') 
+        }
+        stage('Run Script') 
+        {
+            steps 
             {
-            // This runs a script
-                steps 
-                {
-                    sh 'sh ./run.sh'
-                }
+                // This runs a script
+                sh 'sh ./run.sh'
             }
         }
     }
-
-        post {
-        always {
-            archiveArtifacts '*.zip'
+    post 
+    {
+        always 
+        {
+        archiveArtifacts '*.zip'
         }
-
     }
-
 }
